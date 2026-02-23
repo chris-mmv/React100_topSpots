@@ -1,4 +1,6 @@
-const TopSpot = ({ name, description, location }) => {
+import Distance from "./Distance";
+
+const TopSpot = ({ name, description, location, userLocation }) => {
   const [lat, lng] = location;
   const href = `https://maps.google.com/?q=${lat},${lng}`;
 
@@ -6,7 +8,11 @@ const TopSpot = ({ name, description, location }) => {
     <div data-testid="topspot" className="card mb-3">
       <div className="card-body">
         <h4 className="card-title">{name}</h4>
+
         <p className="card-text">{description}</p>
+
+        <Distance from={userLocation} to={location} />
+
         <a href={href} className="btn btn-primary">
           Open in Google Maps
         </a>
